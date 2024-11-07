@@ -8,9 +8,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     </head>
 <body>
-    <!-- Top Bar (existing) -->
-    <div class="top-bar">
-        <div class="full-name">Your Name</div>
+    <!-- Fixed sidebar with toggle button -->
+    <div class="fixed-sidebar">
         <button class="menu-toggle">
             <span class="bar"></span>
             <span class="bar"></span>
@@ -18,8 +17,9 @@
         </button>
     </div>
 
-    <!-- Sidebar (existing) -->
-    <nav class="sidebar">
+    <!-- Main sliding sidebar with navigation -->
+    <div class="sidebar">
+        <!-- Social icons -->
         <div class="social-icons">
             <a href="https://github.com/YOUR_USERNAME" target="_blank">
                 <i class="fab fa-github"></i>
@@ -35,17 +35,20 @@
             </a>
         </div>
 
-        <ul class="nav-menu">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
+        <!-- Navigation menu -->
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
 
-    <!-- Main Content -->
-    <main class="content">
+    <!-- Main content -->
+    <main class="content" role="main">
         <section id="home" class="section">
             <h1>Welcome</h1>
             <p>A brief introduction about yourself</p>
@@ -60,8 +63,8 @@
             <h2>Experience</h2>
             <div class="experience-item">
                 <h3>Company Name</h3>
-                <p class="position">Position Title</p>
-                <p class="date">2020 - Present</p>
+                <div class="position">Position Title</div>
+                <div class="date">2020 - Present</div>
                 <p>Description of your role and achievements</p>
             </div>
         </section>
