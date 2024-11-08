@@ -84,3 +84,25 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 250);
     });
 });
+
+function openLinkedInMessage(event) {
+    event.preventDefault();
+    const url = 'https://www.linkedin.com/messaging/compose?recipient=kafzali';
+    const width = Math.max(400, Math.min(window.innerWidth * 0.4, 800));  // At least 400px, max 800px
+    const height = 600;
+    const left = (window.innerWidth - width) / 2;
+    const top = (window.innerHeight - height) / 2;
+    
+    window.open(
+        url,
+        'LinkedInMessage',
+        `width=${width},
+         height=${height},
+         left=${left},
+         top=${top},
+         toolbar=no,
+         menubar=no,
+         location=no,
+         status=no`
+    );
+}
