@@ -1,3 +1,7 @@
+/* Import fonts - add this at the top of your CSS file */
+/* @import url('https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@400;500;600&display=swap'); */
+/* Note: Didot needs to be installed on your system or hosted, as it's not available on Google Fonts */
+
 /* Root Variables */
 :root {
     /* Color palette */
@@ -9,7 +13,8 @@
     --color-gray-200: #BFBFBD;
     
     /* Typography */
-    --font-primary: 'Open Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --kmt-sys-typography-body-font-family: 'Helvetica Neue', 'Helvetica', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
+    --kmt-sys-typography-heading-font-family: 'Didot', 'Didot LT STD', 'Hoefler Text', Garamond, serif;
     --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
     --base-font-size: 16px;
     
@@ -31,7 +36,7 @@ html {
 }
 
 body {
-    font-family: var(--font-primary);
+    font-family: var(--kmt-sys-typography-body-font-family);
     font-size: 1rem;
     line-height: 1.5;
     color: var(--color-text);
@@ -40,14 +45,16 @@ body {
 
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-primary);
+    font-family: var(--kmt-sys-typography-heading-font-family);
     font-weight: 500;
     line-height: 1.2;
     color: var(--color-primary);
 }
 
 h1 { font-size: 3.5rem; }
-h2 { font-size: 2.8rem; }
+h2 { font-size: 4.5rem;
+     font-weight: 500;
+     margin-bottom: 2.5rem;}
 h3 { font-size: 2.4rem; }
 
 /* Layout Components */
@@ -80,8 +87,8 @@ h3 { font-size: 2.4rem; }
 
 /* Navigation */
 .nav-menu {
-    margin-top: 4rem;
-    margin-left: var(--fixed-sidebar-width);
+    margin-top: 1rem;
+    text-align: center;
 }
 
 .nav-menu ul {
@@ -95,7 +102,9 @@ h3 { font-size: 2.4rem; }
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: 500;
+    font-family: var(--kmt-sys-typography-body-font-family);
     transition: color 0.3s ease;
+    letter-spacing: 0.1em;
 }
 
 .nav-menu a:hover {
@@ -199,18 +208,33 @@ h3 { font-size: 2.4rem; }
 
 /* Experience Items */
 .experience-item {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
 }
 
 .position {
+    display: flex;
+    align-items: baseline;
     font-size: 1.2rem;
+    margin: 0.2rem 0;
+}
+
+.degree {
+    width: 3.5rem;  /* Fixed width for alignment */
+    font-weight: 700;
+    margin-left: 2.5rem;
+
+}
+
+.major {
     color: var(--color-secondary);
-    margin: 0.5rem 0;
 }
 
 .date {
     font-family: var(--font-mono);
-    font-size: 0.9rem;
+    margin-left: 0.2rem;
+    margin-bottom:0.5rem;
+    font-size: 1rem;
     color: var(--color-text);
 }
 
@@ -232,4 +256,43 @@ h3 { font-size: 2.4rem; }
     h1 { font-size: 2.5rem; }
     h2 { font-size: 2rem; }
     h3 { font-size: 1.75rem; }
+}
+
+/* Profile Section */
+.profile {
+    padding: 0rem 0rem 0rem 0rem;
+    text-align: center;
+    background-color: var(--color-primary);
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+}
+
+.profile-picture {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin: 2rem auto 2rem auto;
+    object-fit: cover;
+    border: 3px solid var(--color-light);
+    box-shadow: 0 0 0 3px var(--color-primary);
+}
+
+.profile-name {
+    color: var(--color-light);
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    padding: 0 1rem;
+}
+
+.profile-title {
+    color: var(--color-gray-200);
+    font-size: 1rem;
+    padding: 0 1rem;
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    max-width: 800px;  /* For better readability */
+    color: var(--color-text);
 }

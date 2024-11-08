@@ -33,7 +33,11 @@
     </nav>
 
     <aside class="sidebar">
-        
+        <div class="profile">
+            <img src="assets/profile-picture.jpg" alt="Profile Picture" class="profile-picture">
+            <h2 class="profile-name">Kasra Afzali</h2>
+            <p class="profile-title">Software Developer</p>
+        </div>
 
         <nav class="nav-menu">
             <ul>
@@ -54,26 +58,62 @@
 
         <section id="about" class="section">
             <h2>About Me</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            <p>With a unique background in clinical medicine and computer science, I'm passionate about bringing data to solve complex problems and enjoy combining my skills from both fields to bring a fresh perspective to machine learning and software development and create practical, impactful technology.</p>
         </section>
 
         <section id="education" class="section">
             <h2>Education</h2>
             <div class="experience-item">
-                <h3>University Name</h3>
-                <p class="position">Degree Title</p>
+                <h3>University of Michigan</h3>
+                <p class="date">2024 - 2025</p>
+                <p class="position">
+                    <span class="degree">MS</span>
+                    <span class="major">Data Science</span>
+                </p>
+            </div>
+            <div class="experience-item">
+                <h3>University of California Irvine</h3>
                 <p class="date">2018 - 2022</p>
-                <p>Description of your studies and achievements</p>
+                <p class="position">
+                    <span class="degree">MD</span>
+                    <span class="major">Doctor of Medicine</span>
+                </p>
+            </div>
+            <div class="experience-item">
+                <h3>University of California Davis</h3>
+                <p class="date">2014 - 2017</p>
+                <p class="position">
+                    <span class="degree">BS</span>
+                    <span class="major">Neurobiology</span>
+                </p>
+                <p class="position">
+                    <span class="degree">Minor</span>
+                    <span class="major">Technology Management</span>
+                </p>
             </div>
         </section>
 
         <section id="experience" class="section">
             <h2>Experience</h2>
             <div class="experience-item">
-                <h3>Company Name</h3>
-                <p class="position">Position Title</p>
-                <p class="date">2020 - Present</p>
-                <p>Description of your role and achievements</p>
+                <h3>UC Irvine, Department of Radiology</h3>
+                <p class="position">ML Research Internship</p>
+                <p class="date">2020 - 2022</p>
+                <ul>
+                    <li>Developed CNN models for medical image segmentation enabling automated organ volume calculations, outperforming baseline models detection accuracy from 65% to 99% with 91% specificity.</li>
+                    <li>Assisted in data preparation and model evaluation for CNN pipeline processing 10,000+ clinical scans.</li>
+                    <li>Aligned clinical goals and technical implementation by translating medical needs into ML specifications.</li>
+                </ul>
+            </div>
+            <div class="experience-item">
+                <h3>UC Irvine, Department of Ophthalmology</h3>
+                <p class="position">Data Analysis Research Internship</p>
+                <p class="date">2018 - 2020</p>
+                <ul>
+                    <li>Led peer-reviewed study analyzing 20+ years of faculty promotion trends in academic ophthalmology, examining gender and racial disparities in career advancement.</li>
+                    <li>Developed data pipeline, data cleaning, and feature engineering of public records across 50+ institutions.</li>
+                    <li>Developed multivariate regression and longitudinal time-series models to quantify demographic impacts on academic advancement rates.</li>
+                </ul>
             </div>
         </section>
 
@@ -81,12 +121,32 @@
             <h2>Projects</h2>
             <div class="project-grid">
                 <article class="project-card">
-                    <h3>Project 1</h3>
-                    <p>Project description goes here</p>
+                    <h3>Backgammon Solver</h3>
+                    <p class="project-subtitle">Reinforcement Learning</p>
+                    <ul>
+                        <li>Extended AlphaZero architecture to create novel solution for probabilistic game environments.</li>
+                        <li>Designed hybrid architecture with MCTS with RNN priors to efficiently navigate stochastic action space.</li>
+                        <li>Optimized self-play training through parallel processing and tree-pruning, achieving 14x improvement in iteration time from 10s to 0.7s.</li>
+                    </ul>
                 </article>
                 <article class="project-card">
-                    <h3>Project 2</h3>
-                    <p>Project description goes here</p>
+                    <h3>California Dialysis Regulation Voting Analysis</h3>
+                    <p class="project-subtitle">Data Engineering and Statistical Modeling</p>
+                    <ul>
+                        <li>Engineered a multi-stage ETL pipeline in Python to integrate and clean 1M+ semi-structured records.</li>
+                        <li>Developed interactive geospatial visualizations and animated time series graphs.</li>
+                        <li>Created custom database solution enabling complex cross-table analysis and feature importance modeling.</li>
+                        <li>Applied feature importance analysis, to identify key predictors and improve model prediction accuracy.</li>
+                    </ul>
+                </article>
+                <article class="project-card">
+                    <h3>Diabetes Prediction Model Development</h3>
+                    <p class="project-subtitle">ML Development</p>
+                    <ul>
+                        <li>Developed end-to-end diabetes prediction ML pipeline, evaluating multiple classifier architectures.</li>
+                        <li>Implemented systematic imputation and transformation pipelines and feature engineering.</li>
+                        <li>Implemented ensemble models and cross-validation for improved model performance and robustness.</li>
+                    </ul>
                 </article>
             </div>
         </section>
