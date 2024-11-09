@@ -1,8 +1,12 @@
-/* Import fonts */
+/* ==========================================================================
+   1. Foundation
+   ========================================================================== */
+
+/* 1.1 Imports and Fonts */
 /* @import url('https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@400;500;600&display=swap'); */
 /* Note: Didot needs to be installed on your system or hosted */
 
-/* Root Variables */
+/* 1.2 CSS Variables */
 :root {
     /* Color palette */
     --color-primary: #0D0D0D;
@@ -16,14 +20,15 @@
     --kmt-sys-typography-body-font-family: 'Helvetica Neue', 'Helvetica', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
     --kmt-sys-typography-heading-font-family: 'Didot', 'Didot LT STD', 'Hoefler Text', Garamond, serif;
     --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
-    --base-font-size: 16px;
+    --base-font-size: 14px;
     
     /* Layout */
-    --sidebar-width: 16.5rem;
+    --sidebar-width: 17rem;
     --transition-speed: 0.25s;
+    --date-width: 6rem;
 }
 
-/* Reset and Base Styles */
+/* 1.3 Reset and Base Styles */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -45,7 +50,7 @@ html {
     }
 }
 
-/* Global Typography */
+/* 1.4 Base Typography */
 body {
     font-family: var(--kmt-sys-typography-body-font-family);
     font-size: var(--base-font-size);
@@ -63,17 +68,34 @@ h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
 
-/* Layout Components */
+/* ==========================================================================
+   2. Layout Components
+   ========================================================================== */
+
+/* 2.1 Topbar */
 .fixed-topbar {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 2000;
-    padding: 1rem;
+    padding: 0.75rem;
 }
 
-/* Sidebar */
+.fixed-topbar::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: calc(0.75rem * 2 + 32px);
+    background: var(--color-light);
+    z-index: 1200;
+    margin-left: var(--topbar-margin, 0);
+    transition: margin var(--transition-speed) ease;
+}
+
+/* 2.2 Sidebar */
 .sidebar {
     position: fixed;
     top: 0;
@@ -91,7 +113,7 @@ h1, h2, h3, h4, h5, h6 {
 .sidebar.closed { transform: translateX(-100%); }
 .sidebar.open { transform: translateX(0); }
 
-/* Navigation */
+/* 2.3 Navigation */
 .nav-menu {
     margin-top: 1rem;
     text-align: center;
@@ -103,10 +125,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .nav-menu a {
     display: block;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem;
     color: var(--color-gray-200);
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 500;
     font-family: var(--kmt-sys-typography-body-font-family);
     transition: color 0.3s ease;
@@ -117,7 +139,38 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-light);
 }
 
-/* Menu Toggle and Social Icons */
+/* 2.4 Content Layout */
+.content {
+    margin-left: 0;
+    padding: 2rem;
+    width: 100%;
+    transition: margin var(--transition-speed) ease;
+}
+
+.sidebar.open + .content {
+    margin-left: var(--sidebar-width);
+}
+
+/* Add section class here */
+.section {
+    min-height: 100vh;
+    padding: 4rem 2rem;
+    scroll-snap-align: start;
+    scroll-margin-top: 4rem;
+}
+
+.section-title {
+    font-family: var(--kmt-sys-typography-heading-font-family);
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+}
+
+/* ==========================================================================
+   3. Components
+   ========================================================================== */
+
+/* 3.1 Menu Toggle and Social Icons */
 .menu-toggle {
     background: none;
     border: none;
@@ -134,12 +187,13 @@ h1, h2, h3, h4, h5, h6 {
     opacity: 0.8;
 }
 
-/* Social Icons and Links */
 .social-icons {
     display: flex;
     align-items: center;
     width: 100%;
     padding: 0;
+    position: relative;
+    z-index: 2000;
 }
 
 .social-links {
@@ -171,41 +225,27 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-light);
 }
 
-/* Filter Effects */
 .menu-toggle.active img,
 .fixed-topbar.inverted .social-links img {
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
 }
 
-/* Main Content */
-.content {
+/* 3.2 Grid Systems */
+.grid_1x2_fixed {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    max-width: 100%;
     margin-left: 0;
-    padding: 2rem;
-    transition: margin var(--transition-speed) ease;
+    margin-right: auto;
 }
 
-.sidebar.open + .content {
-    margin-left: var(--sidebar-width);
-}
+/* ==========================================================================
+   4. Page Sections
+   ========================================================================== */
 
-/* Sections */
-.section {
-    min-height: auto;
-    padding: 15rem 2rem;
-    display: flex;
-    flex-direction: column;
-    scroll-snap-align: start;
-    scroll-snap-stop: always;
-    padding-left: 5rem;
-}
-
-.section-title {
-    font-size: 5rem;
-    margin-bottom: 5rem;
-    color: var(--color-primary);
-}
-
-/* Home Section */
+/* 4.1 Home */
 #home {
     display: flex;
     flex-direction: column;
@@ -253,110 +293,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--color-text);
 }
 
-/* Project Grid */
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-    margin-top: 2rem;
-}
-
-.project-card {
-    background: var(--color-primary);
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    color: var(--color-light);
-}
-
-/* Experience Items */
-.experience-item {
-    margin-bottom: 3rem;
-}
-
-
-.experience-grid {
-    display: grid;
-    grid-template-columns: 11rem 1fr;
-    grid-template-rows: auto auto;
-    gap: 0.25rem;
-    align-items: baseline;
-}
-
-.experience-date {
-    font-family: var(--kmt-sys-typography-heading-font-family);
-    font-size: 2rem;
-    line-height: 1.2;
-    max-width: 700;
-    width: 10rem;
-    color: var(--color-secondary);
-    text-align: right;
-}
-
-.experience-position {
-    font-family: var(--kmt-sys-typography-heading-font-family);
-    font-size: 2rem;
-    line-height: 1.2;
-    max-width: 700;
-    text-align: left;
-    margin-left: 3rem;
-    color: var(--color-secondary);
-}
-
-.experience-degree {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    max-width: 700;
-    width: 10rem;
-    text-align: right;
-    color: var(--color-secondary);
-}
-
-.experience-major {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    max-width: 700;
-    color: var(--color-secondary);
-    text-align: left;
-    margin-left: 3rem;
-}
-
-.experience-title {
-    font-size: 1.5rem;
-    line-height: 1.6;
-    max-width: 700;
-    color: var(--color-secondary);
-    text-align: left;
-    margin-left: 3rem;
-}
-
-.experience-detail {
-    font-size: 1.2rem;
-    line-height: 1.25;
-    max-width: 50rem;
-    color: var(--color-secondary);
-    text-align: left;
-    margin-left: 3rem;
-    margin-top: 0.5rem;
-}
-
-/* Add spacing between paragraphs */
-.experience-detail p {
-    margin-bottom: 0.6rem;
-}
-
-.experience-detail p:last-child {
-    margin-bottom: 0;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .experience-grid {
-        grid-template-columns: 8rem 1fr;
-        gap: 0.3rem;
-    }
-}
-
-/* Profile Section */
+/* 4.2 Profile */
 .profile {
     padding: 0;
     text-align: center;
@@ -366,8 +303,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .profile-picture {
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     margin: 2rem auto;
     object-fit: cover;
@@ -388,9 +325,9 @@ h1, h2, h3, h4, h5, h6 {
     padding: 0 1rem;
 }
 
-/* About Section */
+/* 4.3 About */
 #about p {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     line-height: 1.6;
     color: var(--color-primary);
 }
@@ -400,7 +337,84 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 5rem;
 }
 
-/* Contact Section */
+/* 4.4 Experience */
+.experience-item {
+    margin-bottom: 3rem;
+}
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0.25rem;
+    align-items: baseline;
+}
+
+.experience-date {
+    font-family: var(--kmt-sys-typography-heading-font-family);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--color-secondary);
+    text-align: right;
+    width: max-content; /* This establishes the reference width */
+}
+
+.experience-position {
+    font-family: var(--kmt-sys-typography-heading-font-family);
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: var(--color-secondary);
+    text-align: left;
+    width: 100%;
+}
+
+.experience-degree {
+    line-height: 1.6;
+    max-width: 700;
+    color: var(--color-secondary);
+    text-align: right;
+}
+
+
+.experience-major {
+    line-height: 1.6;
+    max-width: 700;
+    color: var(--color-secondary);
+    text-align: left;
+}
+
+.experience-title {
+    margin-left: 1rem;
+}
+
+.experience-detail {
+    margin-left: 1rem;
+}
+
+/* Add spacing between paragraphs */
+.experience-detail p {
+    margin-bottom: 0.6rem;
+}
+
+.experience-detail p:last-child {
+    margin-bottom: 0;
+}
+
+/* 4.5 Projects */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.project-card {
+    background: var(--color-primary);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    color: var(--color-light);
+}
+
+/* 4.6 Contact */
 #contact {
     text-align: center;
 }
@@ -424,12 +438,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
 }
 
-/* Responsive Design */
+/* ==========================================================================
+   5. Media Queries
+   ========================================================================== */
+
 @media (max-width: 768px) {
+    /* 9.1 Root Variables */
     :root {
         --sidebar-width: 100%;
+        --date-width: 6rem;
     }
     
+    /* 9.2 Layout Adjustments */
     .content {
         margin-left: 0;
         padding: 1rem;
@@ -440,7 +460,7 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .section {
-        padding: 8rem 1rem;
+        padding: 6rem 0.75rem;
     }
     
     .home-container {
@@ -460,6 +480,80 @@ h1, h2, h3, h4, h5, h6 {
     }
     
     .about-text {
-        font-size: 1.2rem;
+        font-size: 1rem;
+    }
+    
+    /* 9.4 Typography Adjustments */
+    .date-position-grid {
+        display: grid;
+        grid-template-columns: var(--date-width, auto) 1fr;
+        gap: 1.5rem;
+        align-items: baseline;
+        margin-top: 1rem;
+        font-size: 1.1rem;
+        padding-right: 0.5rem;
+    }
+
+    .experience-date {
+        text-align: left;
+    }
+}
+
+.date-position-grid {
+    display: grid;
+    grid-template-columns: var(--date-width, auto) auto;
+    gap: 1.5rem;
+    align-items: baseline;
+    margin-top: 1rem;
+}
+
+/* Add this new grid class */
+.degree-major-grid {
+    display: grid;
+    grid-template-columns: var(--date-width, auto) 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+}
+
+
+
+
+
+.experience-major {
+    line-height: 1.6;
+    color: var(--color-secondary);
+    text-align: left;
+}
+
+/* Regular desktop layout */
+.date-position-grid {
+    display: grid;
+    grid-template-columns: var(--date-width, auto) 1fr;
+    gap: 1.5rem;
+    align-items: baseline;
+    margin-top: 1rem;
+}
+
+/* Mobile layout */
+@media (max-width: 768px) {
+    .date-position-grid {
+        grid-template-rows: auto auto;  /* Creates 2 rows */
+        grid-template-columns: 1fr;     /* Creates 1 column */
+        gap: 0.1rem;                      /* Adjusted gap for vertical spacing */
+    }
+
+    .experience-date {
+        text-align: left;  /* Align date to left on mobile */
+    }
+
+    .degree-major-grid {
+        grid-template-columns: 3rem auto 1fr;
+
+    }
+
+    .experience-degree {
+        max-width: 3rem;
+        text-align: left;
+        margin-left: 1.25rem;
     }
 }

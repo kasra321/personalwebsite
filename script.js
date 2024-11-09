@@ -14,11 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.remove('closed');
         menuToggle.classList.add('active');
         socialBar.classList.add('inverted');
+        document.documentElement.style.setProperty('--topbar-margin', 'var(--sidebar-width)');
     } else {
         sidebar.classList.add('closed');
         sidebar.classList.remove('open');
         menuToggle.classList.remove('active');
         socialBar.classList.remove('inverted');
+        document.documentElement.style.setProperty('--topbar-margin', '0');
     }
     
     // Toggle sidebar function
@@ -28,12 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
         sidebar.classList.toggle('open');
         sidebar.classList.toggle('closed');
         
-        // Store sidebar state
         localStorage.setItem(SIDEBAR_STATE_KEY, isOpen ? 'closed' : 'open');
         
-        // Toggle active class on menu button and social bar
         menuToggle.classList.toggle('active');
         socialBar.classList.toggle('inverted');
+        
+        document.documentElement.style.setProperty(
+            '--topbar-margin', 
+            isOpen ? '0' : 'var(--sidebar-width)'
+        );
     };
     
     // Event listeners
@@ -46,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 toggleSidebar();
             }
             
-            // Smooth scroll to section
             e.preventDefault();
             const targetId = link.getAttribute('href');
             const targetSection = document.querySelector(targetId);
@@ -75,23 +79,24 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            const storedState = localStorage.getItem(SIDEBAR_STATE_KEY);
-            
-            // Only auto-open sidebar on desktop if it was previously open
-            if (window.innerWidth > 768 && storedState === 'open') {
-                sidebar.classList.remove('closed');
-                sidebar.classList.add('open');
-                menuToggle.classList.add('active');
-                socialBar.classList.add('inverted');
-            }
-            
-            // Force close on mobile regardless of stored state
-            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+            if (window.innerWidth <= 768) {
+                // Always close sidebar on mobile
                 sidebar.classList.remove('open');
                 sidebar.classList.add('closed');
                 menuToggle.classList.remove('active');
                 socialBar.classList.remove('inverted');
+                document.documentElement.style.setProperty('--topbar-margin', '0');
                 localStorage.setItem(SIDEBAR_STATE_KEY, 'closed');
+            } else {
+                // Restore stored state on desktop
+                const storedState = localStorage.getItem(SIDEBAR_STATE_KEY);
+                if (storedState === 'open') {
+                    sidebar.classList.remove('closed');
+                    sidebar.classList.add('open');
+                    menuToggle.classList.add('active');
+                    socialBar.classList.add('inverted');
+                    document.documentElement.style.setProperty('--topbar-margin', 'var(--sidebar-width)');
+                }
             }
         }, 250);
     });
