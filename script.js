@@ -75,13 +75,38 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('resize', () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
-            if (window.innerWidth > 768 && sidebar.classList.contains('closed')) {
+            const storedState = localStorage.getItem(SIDEBAR_STATE_KEY);
+            
+            // Only auto-open sidebar on desktop if it was previously open
+            if (window.innerWidth > 768 && storedState === 'open') {
                 sidebar.classList.remove('closed');
                 sidebar.classList.add('open');
                 menuToggle.classList.add('active');
                 socialBar.classList.add('inverted');
             }
+            
+            // Force close on mobile regardless of stored state
+            if (window.innerWidth <= 768 && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+                sidebar.classList.add('closed');
+                menuToggle.classList.remove('active');
+                socialBar.classList.remove('inverted');
+                localStorage.setItem(SIDEBAR_STATE_KEY, 'closed');
+            }
         }, 250);
+    });
+    
+    // Add smooth scrolling to all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start',
+                duration: 1000  // Milliseconds for scroll duration
+            });
+        });
     });
 });
 
@@ -106,3 +131,30 @@ function openLinkedInMessage(event) {
          status=no`
     );
 }
+
+function adjustFontSize(element, container) {
+    const text = element.textContent;
+    let fontSize = 100; // Start with a large size
+    element.style.fontSize = fontSize + 'px';
+    
+    // Reduce font size until text fits container width
+    while (element.offsetWidth > container.offsetWidth && fontSize > 0) {
+        fontSize--;
+        element.style.fontSize = fontSize + 'px';
+    }
+}
+
+// Apply to both title and subtitle
+function adjustAllText() {
+    const title = document.querySelector('#home h1');
+    const subtitle = document.querySelector('#home .title');
+    const titleContainer = document.querySelector('.title-container');
+    const subtitleContainer = document.querySelector('.subtitle-container');
+    
+    adjustFontSize(title, titleContainer);
+    adjustFontSize(subtitle, subtitleContainer);
+}
+
+// Run on load and resize
+window.addEventListener('load', adjustAllText);
+window.addEventListener('resize', adjustAllText);

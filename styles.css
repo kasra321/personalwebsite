@@ -1,6 +1,6 @@
-/* Import fonts - add this at the top of your CSS file */
+/* Import fonts */
 /* @import url('https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@400;500;600&display=swap'); */
-/* Note: Didot needs to be installed on your system or hosted, as it's not available on Google Fonts */
+/* Note: Didot needs to be installed on your system or hosted */
 
 /* Root Variables */
 :root {
@@ -33,32 +33,35 @@
 html {
     font-size: var(--base-font-size);
     scroll-behavior: smooth;
+    scroll-snap-type: y mandatory;
+    scroll-timeline: 1000ms;
 }
 
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 1000ms;
+    }
+}
+
+/* Global Typography */
 body {
     font-family: var(--kmt-sys-typography-body-font-family);
-    font-size: 1rem;
+    font-size: var(--base-font-size);
     line-height: 1.5;
     color: var(--color-text);
     background-color: var(--color-light);
 }
 
-/* Typography */
+/* Base Heading Styles */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--kmt-sys-typography-heading-font-family);
     font-weight: 500;
     line-height: 1.2;
     color: var(--color-primary);
+    margin: 0;
 }
-
-h1 { font-size: 3.5rem; }
-h2 { font-size: 5rem;
-     font-weight: 500;
-     margin-bottom: 8rem;}
-h3 { font-size: 2.1rem;
-     font-weight: 450;
-     margin-bottom: 0.5rem;
- }
 
 /* Layout Components */
 .fixed-topbar {
@@ -188,15 +191,66 @@ h3 { font-size: 2.1rem;
 /* Sections */
 .section {
     min-height: auto;
-    padding: 8rem 2rem;
+    padding: 15rem 2rem;
     display: flex;
     flex-direction: column;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    padding-left: 5rem;
 }
 
-/* First section (home) might need special treatment */
+.section-title {
+    font-size: 5rem;
+    margin-bottom: 5rem;
+    color: var(--color-primary);
+}
+
+/* Home Section */
 #home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     min-height: 100vh;
-    padding: 15rem 2rem;
+}
+
+.home-container {
+    width: 60%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title-container,
+.subtitle-container {
+    width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.subtitle-container {
+    margin-top: 2rem;
+}
+
+#home h1 {
+    width: 100%;
+    font-size: min(8vw, calc(60vw * 0.16));
+    line-height: 1.2;
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 0;
+}
+
+#home h2 {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: min(4vw, calc(50vw * 0.12));
+    font-family: var(--kmt-sys-typography-body-font-family);
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    color: var(--color-text);
 }
 
 /* Project Grid */
@@ -216,66 +270,95 @@ h3 { font-size: 2.1rem;
 
 /* Experience Items */
 .experience-item {
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
+    margin-bottom: 3rem;
 }
 
-.position {
-    display: flex;
+
+.experience-grid {
+    display: grid;
+    grid-template-columns: 11rem 1fr;
+    grid-template-rows: auto auto;
+    gap: 0.25rem;
     align-items: baseline;
-    font-size: 1rem;
-    margin: 0.2rem;
 }
 
-.degree {
-    width: 4.5rem;  /* Fixed width for alignment */
-    text-align-last: right;
-    font-weight: 700;
-    margin-left: none
-
-}
-
-.major {
+.experience-date {
+    font-family: var(--kmt-sys-typography-heading-font-family);
+    font-size: 2rem;
+    line-height: 1.2;
+    max-width: 700;
+    width: 10rem;
     color: var(--color-secondary);
-    margin-left: 2rem;
+    text-align: right;
 }
 
-.date {
-    font-family: var(--font-mono);
-    margin-left: 0.2rem;
-    margin-bottom:0.5rem;
-    font-size: 1rem;
-    width: 11rem;
-    color: var(--color-text);
-    text-align: center;
+.experience-position {
+    font-family: var(--kmt-sys-typography-heading-font-family);
+    font-size: 2rem;
+    line-height: 1.2;
+    max-width: 700;
+    text-align: left;
+    margin-left: 3rem;
+    color: var(--color-secondary);
 }
 
-/* Responsive Design */
+.experience-degree {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: 700;
+    width: 10rem;
+    text-align: right;
+    color: var(--color-secondary);
+}
+
+.experience-major {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: 700;
+    color: var(--color-secondary);
+    text-align: left;
+    margin-left: 3rem;
+}
+
+.experience-title {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    max-width: 700;
+    color: var(--color-secondary);
+    text-align: left;
+    margin-left: 3rem;
+}
+
+.experience-detail {
+    font-size: 1.2rem;
+    line-height: 1.25;
+    max-width: 50rem;
+    color: var(--color-secondary);
+    text-align: left;
+    margin-left: 3rem;
+    margin-top: 0.5rem;
+}
+
+/* Add spacing between paragraphs */
+.experience-detail p {
+    margin-bottom: 0.6rem;
+}
+
+.experience-detail p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive adjustments */
 @media (max-width: 768px) {
-    :root {
-        --sidebar-width: 100%;
-    }
-    
-    .content {
-        margin-left: 0;
-        padding: 1rem;
-    }
-    
-    .sidebar.open + .content {
-        margin-left: 0;
-    }
-    
-    h1 { font-size: 2.5rem; }
-    h2 { font-size: 2rem; }
-    h3 { font-size: 1.75rem; }
-    .section {
-        padding: 8rem 1rem;
+    .experience-grid {
+        grid-template-columns: 8rem 1fr;
+        gap: 0.3rem;
     }
 }
 
 /* Profile Section */
 .profile {
-    padding: 0rem 0rem 0rem 0rem;
+    padding: 0;
     text-align: center;
     background-color: var(--color-primary);
     margin-top: 4rem;
@@ -286,7 +369,7 @@ h3 { font-size: 2.1rem;
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    margin: 2rem auto 2rem auto;
+    margin: 2rem auto;
     object-fit: cover;
     border: 3px solid var(--color-light);
     box-shadow: 0 0 0 3px var(--color-primary);
@@ -305,46 +388,78 @@ h3 { font-size: 2.1rem;
     padding: 0 1rem;
 }
 
+/* About Section */
 #about p {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 1.6;
-    max-width: 800px;  /* For better readability */
-    color: var(--color-text);
+    color: var(--color-primary);
+}
+
+.about-text {
+    max-width: 800px;
+    margin-bottom: 5rem;
+}
+
+/* Contact Section */
+#contact {
+    text-align: center;
 }
 
 .linkedin-message-btn {
     display: inline-block;
-    margin-top: 2rem;
-    color: var(--color-text);  /* Match body text color */
+    margin-top: 3rem;
+    color: var(--color-text);
     text-decoration: none;
     font-family: var(--kmt-sys-typography-body-font-family);
-    font-size: 1.1rem;
+    font-size: 1.5rem;
+    text-align: center;
     transition: color 0.3s ease;
 }
 
 .linkedin-message-btn:hover {
-    color: var(--color-primary);  /* Darker color on hover */
-}
-
-#contact {
-    text-align: center;
+    color: var(--color-primary);
 }
 
 #contact .linkedin-message-btn {
     margin-top: 2rem;
 }
 
-#about .about-text {
-    font-size: 1.5rem;  /* Much larger to test if it's working */
-    line-height: 1.6;
-    max-width: 800px;
-    margin-bottom: 8rem;
-    color: var(--color-text);
-}
-
-/* Responsive adjustment */
+/* Responsive Design */
 @media (max-width: 768px) {
-    #about .about-text {
+    :root {
+        --sidebar-width: 100%;
+    }
+    
+    .content {
+        margin-left: 0;
+        padding: 1rem;
+    }
+    
+    .sidebar.open + .content {
+        margin-left: 0;
+    }
+    
+    .section {
+        padding: 8rem 1rem;
+    }
+    
+    .home-container {
+        width: 80%;
+    }
+    
+    #home h1 {
+        width: 100%;
+        font-size: 8vw;
+        white-space: normal;
+    }
+    
+    #home h2 {
+        width: 100%;
+        font-size: 4vw;
+        white-space: normal;
+    }
+    
+    .about-text {
         font-size: 1.2rem;
     }
 }
