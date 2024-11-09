@@ -52,83 +52,97 @@
 
     <main class="content" role="main">
         <section id="home" class="section">
-            <h1>Kasra Afzali</h1>
-            <p class="title">Software Developer</p>
-            <a href="#" 
-               onclick="openLinkedInMessage(event)"
-               class="linkedin-message-btn">
-                Message me on LinkedIn
-            </a>
+            <div class="home-container">
+                <div class="title-container">
+                    <h1>Kasra Afzali</h1>
+                </div>
+                <div class="subtitle-container">
+                    <h2>Software Developer | Data Scientist</h2>
+                </div>
+                <a href="#" 
+                   onclick="openLinkedInMessage(event)"
+                   class="linkedin-message-btn">
+                    Message me on LinkedIn
+                </a>
+            </div>
         </section>
 
         <section id="about" class="section">
-            <h2>About Me</h2>
-            <p class="about-text">With a unique background in clinical medicine and computer science, I'm passionate about bringing data to solve complex problems and enjoy combining my skills from both fields to bring a fresh perspective to machine learning and software development and create practical, impactful technology.</p>
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">I'm passionate about bringing data to solve complex problems. With a unique background in clinical medicine and computer science, I enjoy combining my skills from both fields to bring a fresh perspective to machine learning and software development and create impactful technology.</p>
             
             <div class="experience-item">
-                <h3>University of Michigan</h3>
-                <p class="date">2024 - 2025</p>
-                <p class="position">
-                    <span class="degree">MS</span>
-                    <span class="major">Data Science</span>
-                </p>
+                <div class="experience-grid">
+                    <div class="experience-date">2024 - 2025</div>
+                    <div class="experience-position">University of Michigan</div>
+                    <div class="experience-degree">MS</div>
+                    <div class="experience-major">Data Science</div>
+                </div>
+            </div>
+
+            <div class="experience-item">   
+                <div class="experience-grid">
+                    <div class="experience-date">2018 - 2022</div>
+                    <div class="experience-position">University of California Irvine</div>
+                    <div class="experience-degree">MD</div>
+                    <div class="experience-major">Doctor of Medicine</div>
+                </div>
             </div>
             <div class="experience-item">
-                <h3>University of California Irvine</h3>
-                <p class="date">2018 - 2022</p>
-                <p class="position">
-                    <span class="degree">MD</span>
-                    <span class="major">Doctor of Medicine</span>
-                </p>
-            </div>
-            <div class="experience-item">
-                <h3>University of California Davis</h3>
-                <p class="date">2014 - 2017</p>
-                <p class="position">
-                    <span class="degree">BS</span>
-                    <span class="major">Neurobiology</span>
-                </p>
-                <p class="position">
-                    <span class="degree">Minor</span>
-                    <span class="major">Technology Management</span>
-                </p>
+                <div class="experience-grid">
+                    <div class="experience-date">2014 - 2017</div>
+                    <div class="experience-position">University of California Davis</div>
+                    <div class="experience-degree">BS</div>
+                    <div class="experience-major">Neurobiology</div>
+                    <div class="experience-degree">Minor</div>
+                    <div class="experience-major">Technology Management</div>
+                </div>
             </div>
         </section>
 
         <section id="experience" class="section">
-            <h2>Experience</h2>
+            <h2 class="section-title">Experience</h2>
             <div class="experience-item">
-                <h3>UC Irvine, Department of Radiology</h3>
-                <p class="position">ML Research Internship</p>
-                <p class="date">2020 - 2022</p>
-                <ul>
-                    <li>Developed CNN models for medical image segmentation enabling automated organ volume calculations, outperforming baseline models detection accuracy from 65% to 99% with 91% specificity.</li>
-                    <li>Assisted in data preparation and model evaluation for CNN pipeline processing 10,000+ clinical scans.</li>
-                    <li>Aligned clinical goals and technical implementation by translating medical needs into ML specifications.</li>
-                </ul>
-            </div>
+                <div class="experience-grid">
+                    <div class="experience-date">2020 - 2022</div>
+                    <div class="experience-position">UC Irvine, Department of Radiology</div>
+                    <div class="experience-degree"></div>
+                    <div class="experience-title">ML Research Internship</div>
+                    <div class="experience-degree"></div>
+                    <div class = "experience-detail">
+                            <p>Developed CNN models for medical image segmentation enabling automated organ volume calculations, outperforming baseline models detection accuracy from 65% to 99% with 91% specificity.</p>
+                            <p>Assisted in data preparation and model evaluation for CNN pipeline processing 10,000+ clinical scans.</p>
+                            <p>Aligned clinical goals and technical implementation by translating medical needs into ML specifications.</p>
+                    </div>
+                </div>
+                
+            </div>          
             <div class="experience-item">
-                <h3>UC Irvine, Department of Ophthalmology</h3>
-                <p class="position">Data Analysis Research Internship</p>
-                <p class="date">2018 - 2020</p>
-                <ul>
-                    <li>Led peer-reviewed study analyzing 20+ years of faculty promotion trends in academic ophthalmology, examining gender and racial disparities in career advancement.</li>
-                    <li>Developed data pipeline, data cleaning, and feature engineering of public records across 50+ institutions.</li>
-                    <li>Developed multivariate regression and longitudinal time-series models to quantify demographic impacts on academic advancement rates.</li>
-                </ul>
+                <div class="experience-grid">
+                    <div class="experience-date">2018 - 2020</div>
+                    <div class="experience-position">UC Irvine, Department of Ophthalmology</div>
+                    <div class="experience-degree"></div>
+                    <div class="experience-title">Data Analysis Research Internship</div>
+                    <div class="experience-degree"></div>
+                    <div class = "experience-detail">
+                        <p>Led peer-reviewed study analyzing 20+ years of faculty promotion trends in academic ophthalmology, examining gender and racial disparities in career advancement.</p>
+                        <p>Developed data pipeline, data cleaning, and feature engineering of public records across 50+ institutions.</p>
+                        <p>Developed multivariate regression and longitudinal time-series models to quantify demographic impacts on academic advancement rates.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="projects" class="section">
-            <h2>Projects</h2>
+            <h2 class="section-title">Projects</h2>
             <div class="project-grid">
                 <article class="project-card">
                     <h3>Backgammon Solver</h3>
                     <p class="project-subtitle">Reinforcement Learning</p>
-                    <ul>
-                        <li>Extended AlphaZero architecture to create novel solution for probabilistic game environments.</li>
-                        <li>Designed hybrid architecture with MCTS with RNN priors to efficiently navigate stochastic action space.</li>
-                        <li>Optimized self-play training through parallel processing and tree-pruning, achieving 14x improvement in iteration time from 10s to 0.7s.</li>
+                    <div class = "experience-detail">
+                        <p>Extended AlphaZero architecture to create novel solution for probabilistic game environments.</p>
+                        <p>Designed hybrid architecture with MCTS with RNN priors to efficiently navigate stochastic action space.</p>
+                        <p>Optimized self-play training through parallel processing and tree-pruning, achieving 14x improvement in iteration time from 10s to 0.7s.</p>
                     </ul>
                 </article>
                 <article class="project-card">
