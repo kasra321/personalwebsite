@@ -113,6 +113,23 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+    
+    // Project card expansion
+    const projectCards = document.querySelectorAll('.project-card');
+    
+    projectCards.forEach(card => {
+        const readMoreBtn = card.querySelector('.read-more-btn');
+        
+        readMoreBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            card.classList.toggle('expanded');
+            
+            // Update button text
+            readMoreBtn.textContent = card.classList.contains('expanded') 
+                ? 'Show Less ↑' 
+                : 'Read More ↓';
+        });
+    });
 });
 
 function openLinkedInMessage(event) {
