@@ -20,7 +20,7 @@
     --kmt-sys-typography-body-font-family: 'Helvetica Neue', 'Helvetica', Arial, -apple-system, BlinkMacSystemFont, sans-serif;
     --kmt-sys-typography-heading-font-family: 'Didot', 'Didot LT STD', 'Hoefler Text', Garamond, serif;
     --font-mono: 'SFMono-Regular', Menlo, Monaco, Consolas, monospace;
-    --base-font-size: 14px;
+    --base-font-size: clamp(14px, 1vw, 18px);
     
     /* Layout */
     --sidebar-width: 17rem;
@@ -161,7 +161,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .section-title {
     font-family: var(--kmt-sys-typography-heading-font-family);
-    font-size: 2rem;
+    font-size: clamp(2rem, 3vw, 4rem);
     color: var(--color-primary);
     margin-bottom: 2rem;
 }
@@ -327,7 +327,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* 4.3 About */
 #about p {
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     line-height: 1.6;
     color: var(--color-primary);
 }
@@ -351,7 +351,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .experience-date {
     font-family: var(--kmt-sys-typography-heading-font-family);
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     line-height: 1.2;
     color: var(--color-secondary);
     text-align: right;
@@ -360,7 +360,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .experience-position {
     font-family: var(--kmt-sys-typography-heading-font-family);
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     line-height: 1.2;
     color: var(--color-secondary);
     text-align: left;
@@ -372,6 +372,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 700;
     color: var(--color-secondary);
     text-align: right;
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
 }
 
 
@@ -380,6 +381,7 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 700;
     color: var(--color-secondary);
     text-align: left;
+    font-size: clamp(1rem, 1.25vw, 1.5rem);
 }
 
 .experience-title {
@@ -431,7 +433,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .project-subtitle {
     color: var(--color-gray-200);
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 1.5vw, 1.75rem);
     margin-bottom: 0.25rem;
 }
 
@@ -469,7 +471,7 @@ h1, h2, h3, h4, h5, h6 {
 .project-card h3 {
     font-family: var(--kmt-sys-typography-heading-font-family);
     color: var(--color-light);
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 2vw, 2.25rem);
     margin-bottom: 0.25rem;
 
 }
